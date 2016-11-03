@@ -7,7 +7,8 @@ import javafx.application.Application;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
         import javafx.scene.layout.*;
-        import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * Created by учитель on 03.11.2016.
@@ -37,7 +38,24 @@ public class Main extends Application{
         imglabel.setGraphicTextGap(20);
         imglabel.setContentDisplay(ContentDisplay.TOP);
 
-        root.getChildren().addAll(label, imglabel);
+        Label magicLabal = new Label();
+        magicLabal.setText("magic Label!");
+        magicLabal.setTranslateX(150);
+        magicLabal.setTranslateY(350);
+
+        magicLabal.setOnMouseEntered(event -> {
+            magicLabal.setScaleX(1.5);
+            magicLabal.setScaleY(1.5);
+            magicLabal.setTextFill(Color.RED);
+        });
+
+        magicLabal.setOnMouseExited(event -> {
+            magicLabal.setScaleX(1);
+            magicLabal.setScaleY(1);
+            magicLabal.setTextFill(Color.BLACK);
+        });
+
+        root.getChildren().addAll(label, imglabel, magicLabal);
 
         Scene scene = new Scene(root, 400, 400);
         primaryStage.setScene(scene);
